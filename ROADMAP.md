@@ -1,4 +1,4 @@
-# Coffee Store — Build Roadmap
+  # Coffee Store — Build Roadmap
 
 A working checklist for turning the current demo into a real coffee-ordering app.
 
