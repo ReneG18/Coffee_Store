@@ -16,9 +16,11 @@ Work these in order — the app stays runnable at every step.
 
 ### Step 1 — Fix the build first
 
-- [ ] Declare `androidx.recyclerview` explicitly in `gradle/libs.versions.toml` and add it to `app/build.gradle.kts`
-  - It is **not declared today** — the app only compiles because `material` pulls it in transitively. One Material bump and the build breaks.
-- [ ] Run `./gradlew assembleDebug` to confirm it still builds
+- [x] Declare `androidx.recyclerview` explicitly in `gradle/libs.versions.toml` and add it to `app/build.gradle.kts`
+  - It was **not declared** — the app only compiled because `material` pulled it in transitively, silently pinning the 2021-era 1.2.1. Now explicitly declared at 1.4.0.
+- [x] Run `./gradlew assembleDebug` to confirm it still builds
+
+> **Prerequisite for every `./gradlew` command below:** the system JDK (26) is too new for Gradle 8.13 / AGP 8.12.3 and fails with a bare `What went wrong: 26`. `~/.zprofile` now exports `JAVA_HOME` pointing at Android Studio's bundled JDK 21 (`/Applications/Android Studio.app/Contents/jbr/Contents/Home`). Android Studio itself was always fine — it uses that JDK internally.
 
 ### Step 2 — Money as `long` cents (+ unit tests)
 
