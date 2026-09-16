@@ -25,6 +25,34 @@
         android:layout_centerHorizontal="true"
         android:paddingBottom="12dp"/>
 
+    <!-- STEP2> Two new rows go here, ABOVE orderTotalText, so the order reads
+         STEP2> Subtotal / Tax / Total:
+         STEP2>
+         STEP2> <TextView
+         STEP2>     android:id="@+id/orderSubtotalText"
+         STEP2>     android:layout_width="wrap_content"
+         STEP2>     android:layout_height="wrap_content"
+         STEP2>     android:text="Subtotal: $0.00"
+         STEP2>     android:textSize="16sp"
+         STEP2>     android:layout_below="@id/confirmationMessage"
+         STEP2>     android:layout_centerHorizontal="true"
+         STEP2>     android:paddingBottom="4dp"/>
+         STEP2>
+         STEP2> <TextView
+         STEP2>     android:id="@+id/orderTaxText"
+         STEP2>     android:layout_width="wrap_content"
+         STEP2>     android:layout_height="wrap_content"
+         STEP2>     android:text="Tax (10.75%): $0.00"
+         STEP2>     android:textSize="16sp"
+         STEP2>     android:layout_below="@id/orderSubtotalText"
+         STEP2>     android:layout_centerHorizontal="true"
+         STEP2>     android:paddingBottom="8dp"/>
+         STEP2>
+         STEP2> ...and orderTotalText below must then change its anchor from
+         STEP2> layout_below="@id/confirmationMessage" to layout_below="@id/orderTaxText".
+         STEP2> RelativeLayout positions by explicit anchor, not document order — forget this
+         STEP2> and the three rows stack on top of each other. -->
+
     <TextView
         android:id="@+id/orderTotalText"
         android:layout_width="wrap_content"

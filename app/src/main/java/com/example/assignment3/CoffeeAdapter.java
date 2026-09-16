@@ -39,7 +39,14 @@ public class CoffeeAdapter extends RecyclerView.Adapter<CoffeeAdapter.ViewHolder
         holder.coffeeName.setText(item.getName());
         holder.coffeeDesc.setText(item.getDescription());
         holder.coffeePrice.setText(String.format("$%.2f", item.getPrice()));
+        // STEP2> Stale call site #3 of 3:
+        // STEP2> holder.coffeePrice.setText(Money.format(item.getBasePriceCents()));
+        // STEP2> Also note the bug being removed: String.format without a Locale uses the device
+        // STEP2> locale, so this line already renders "$8,99" on a German phone.
         holder.coffeeImage.setImageResource(item.getImageID());
+        // STEP2> holder.coffeeImage.setImageResource(MenuImages.resolve(item.getImageKey()));
+        // STEP2> The R-id lookup moves here, at the UI edge, where a fresh R id is always correct.
+        // STEP2> CoffeeItem keeps only the string, so it stays safe to persist and free of resource coupling.
 
         holder.btnAddToCart.setOnClickListener(v -> {
             if(cartListener != null) {
